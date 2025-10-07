@@ -7,8 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="486.0" prefWidth="359.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gihanvs.pos.controller.MainFormController">
+<AnchorPane fx:id="context" prefHeight="486.0" prefWidth="359.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gihanvs.pos.controller.MainFormController">
    <children>
       <ImageView fitHeight="486.0" fitWidth="359.0" pickOnBounds="true">
          <image>
@@ -22,8 +21,8 @@
       </Label>
       <AnchorPane layoutY="343.0" prefHeight="144.0" prefWidth="359.0" style="-fx-background-color: white;">
          <children>
-            <Button layoutX="10.0" layoutY="12.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="341.0" style="-fx-background-color: #00b894;" text="Login" />
-            <Button layoutX="10.0" layoutY="68.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="341.0" style="-fx-background-color: black;" text="Register" textFill="WHITE" />
+            <Button layoutX="10.0" layoutY="12.0" mnemonicParsing="false" onAction="#openLoginFormOnAction" prefHeight="45.0" prefWidth="341.0" style="-fx-background-color: #00b894;" text="Login" />
+            <Button layoutX="10.0" layoutY="68.0" mnemonicParsing="false" onAction="#openRegisterFormOnAction" prefHeight="45.0" prefWidth="341.0" style="-fx-background-color: black;" text="Register" textFill="WHITE" />
             <Label fx:id="lblCompany" layoutX="11.0" layoutY="122.0" prefHeight="17.0" prefWidth="116.0" />
             <Label fx:id="lblVersion" alignment="TOP_RIGHT" layoutX="229.0" layoutY="122.0" prefHeight="17.0" prefWidth="116.0" />
          </children>

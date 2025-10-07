@@ -16,7 +16,7 @@ public class AppInitializer extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        URL resource = getClass().getResource("com/gihanvs/pos/view/MainForm.fxml");
+        URL resource = getClass().getResource("/com/gihanvs/pos/view/MainForm.fxml");
        Parent load= FXMLLoader.load(resource);
         Scene scene = new Scene(load);
         primaryStage.setScene(scene);
