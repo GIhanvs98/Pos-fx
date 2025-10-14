@@ -2,31 +2,25 @@ package com.gihanvs.pos.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
 
-public class LoginFormController {
+public class ResetPassWordFormController {
     public AnchorPane context;
     public Label lblCompany;
     public Label lblVersion;
 
-    public void navigateToForgotPasswordOnAction(ActionEvent actionEvent) throws IOException {
-        setUi("ForgotPasswordFrom");
-
-    }
-
-    public void loginOnAction(ActionEvent actionEvent) throws IOException {
-        setUi("DashboardForm");
-    }
-
     public void backToScreenOnAction(ActionEvent actionEvent) throws IOException {
-        setUi("MainForm");
+    setUi("VerifyContactForm");
+    }
+
+    public void resetPasswordOnAction(ActionEvent actionEvent) throws IOException {
+        setUi("LoginForm");
+
     }
     private void setUi(String location) throws IOException {
         Stage stage =(Stage) context.getScene().getWindow();

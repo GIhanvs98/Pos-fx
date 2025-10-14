@@ -2,35 +2,28 @@ package com.gihanvs.pos.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
 
-public class LoginFormController {
+public class VerifyContactFormController {
     public AnchorPane context;
     public Label lblCompany;
     public Label lblVersion;
 
-    public void navigateToForgotPasswordOnAction(ActionEvent actionEvent) throws IOException {
-        setUi("ForgotPasswordFrom");
-
-    }
-
-    public void loginOnAction(ActionEvent actionEvent) throws IOException {
-        setUi("DashboardForm");
-    }
-
     public void backToScreenOnAction(ActionEvent actionEvent) throws IOException {
-        setUi("MainForm");
+        setUi("ForgotPasswordFrom");
+    }
+
+    public void verifyOTPOnAction(ActionEvent actionEvent) throws IOException {
+        setUi("ResetPasswordFrom");
+
     }
     private void setUi(String location) throws IOException {
         Stage stage =(Stage) context.getScene().getWindow();
         stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/com/gihanvs/pos/view/"+location+".fxml"))));
     }
-
 }
