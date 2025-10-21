@@ -3,27 +3,18 @@ package com.gihanvs.pos;
 import com.gihanvs.pos.db.DbConnection;
 import com.gihanvs.pos.model.LoginData;
 import com.gihanvs.pos.model.User;
+import com.gihanvs.pos.utill.CrudUtill;
 import com.gihanvs.pos.utill.PasswordHash;
 
 import java.sql.*;
 
 public class DatabaseCode {
     public  static boolean registerUser(User user) throws ClassNotFoundException, SQLException {
-        Connection conn = DbConnection.getConnection().getInstance();
-        PreparedStatement ps = conn.prepareStatement("INSERT INTO user VALUES (?,?,?,?,?)");
-        ps.setString(1,user.getUserId());
-        ps.setString(2,user.getEmail());
-        ps.setString(3,user.getDisplayName());
-        ps.setString(4, user.getContactNumber());
-        ps.setString(5, user.getPassword());
-        return ps.executeUpdate()>0;
+            return CrudUtill.execute("INSERT INTO user VALUES (?,?,?,?,?)",user.getUserId(),user.getEmail(),user.getDisplayName(),user.getContactNumber(),user.getPassword());
     }
     public static LoginData loginUser(String email,String rowPassord) throws ClassNotFoundException, SQLException {
 
-        Connection conn = DbConnection.getConnection().getInstance();
-        PreparedStatement ps = conn.prepareStatement("SELECT * FROM user WHERE email = ?");
-        ps.setString(1, email);
-        ResultSet rs = ps.executeQuery();
+        ResultSet rs = CrudUtill.execute("SELECT * FROM user WHERE email = ?",email);
         if (rs.next()) {
             String userEmail = rs.getString("email");
             String hashedPassword = rs.getString("password");
