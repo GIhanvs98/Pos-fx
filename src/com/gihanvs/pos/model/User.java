@@ -7,6 +7,7 @@ public class User {
     private String contactNumber;
     private String password;
 
+
     @Override
     public String toString() {
         return "User{" +

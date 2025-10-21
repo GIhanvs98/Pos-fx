@@ -45,8 +45,6 @@ public class RegisterFormController {
           }
           new Alert(Alert.AlertType.WARNING, "Register Failed").show();
 
-
-
         } catch (ClassNotFoundException | SQLException e) {
             new Alert(Alert.AlertType.ERROR, "Something went wrong..").show();
         }

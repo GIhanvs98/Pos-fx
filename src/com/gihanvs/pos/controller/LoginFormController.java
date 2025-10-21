@@ -1,20 +1,25 @@
 package com.gihanvs.pos.controller;
 
+import com.gihanvs.pos.DatabaseCode;
+import com.gihanvs.pos.model.LoginData;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 
 public class LoginFormController {
     public AnchorPane context;
     public Label lblCompany;
     public Label lblVersion;
+    public TextField txtEmail;
+    public PasswordField txtPassword;
 
     public void navigateToForgotPasswordOnAction(ActionEvent actionEvent) throws IOException {
         setUi("ForgotPasswordFrom");
@@ -22,7 +27,19 @@ public class LoginFormController {
     }
 
     public void loginOnAction(ActionEvent actionEvent) throws IOException {
-        setUi("DashboardForm");
+        try {
+            LoginData loginData = DatabaseCode.loginUser(txtEmail.getText().toLowerCase(), txtPassword.getText());
+            if (loginData.isStatus()){
+                new Alert(Alert.AlertType.INFORMATION, "Welcome "+loginData.getDisplayName(), ButtonType.OK).show();
+                setUi("DashboardForm");
+            } else {
+                new Alert(Alert.AlertType.ERROR, loginData.getMsg()).show();
+            }
+
+        } catch (ClassNotFoundException | SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     public void backToScreenOnAction(ActionEvent actionEvent) throws IOException {

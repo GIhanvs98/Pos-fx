@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane fx:id="context" prefHeight="314.0" prefWidth="273.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gihanvs.pos.controller.LoginFormController">
    <children>
       <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backToScreenOnAction" text="&lt;-Back" />
@@ -21,8 +20,8 @@
             <Font name="Arial Black" size="18.0" />
          </font>
       </Label>
-      <TextField layoutX="38.0" layoutY="119.0" prefHeight="25.0" prefWidth="202.0" promptText="Root Email" />
-      <PasswordField layoutX="38.0" layoutY="155.0" prefHeight="25.0" prefWidth="160.0" promptText="Password" />
+      <TextField fx:id="txtEmail" layoutX="38.0" layoutY="119.0" prefHeight="25.0" prefWidth="202.0" promptText="Root Email" />
+      <PasswordField fx:id="txtPassword" layoutX="38.0" layoutY="155.0" prefHeight="25.0" prefWidth="160.0" promptText="Password" />
       <AnchorPane layoutX="211.0" layoutY="155.0" prefHeight="25.0" prefWidth="29.0" style="-fx-background-color: #636e72;">
          <children>
             <ImageView fitHeight="25.0" fitWidth="22.0" layoutX="2.0" pickOnBounds="true" preserveRatio="true">
