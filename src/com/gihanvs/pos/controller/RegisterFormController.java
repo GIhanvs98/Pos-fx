@@ -30,7 +30,7 @@ public class RegisterFormController {
 
     public void registerOnAction(ActionEvent actionEvent) throws IOException {
         try {
-            DatabaseCode.registerUser(
+          boolean isSaved = DatabaseCode.registerUser(
                     new User(
                             UUID.randomUUID().toString(),
                             txtEmail.getText(),
@@ -38,12 +38,17 @@ public class RegisterFormController {
                             txtContact.getText(),
                             PasswordHash.hashPassword(txtPW.getText())
                             ));
-            setUi("LoginForm");
-            new Alert(Alert.AlertType.INFORMATION, "Register Successfully").show();
+          if (isSaved) {
+              setUi("LoginForm");
+              new Alert(Alert.AlertType.INFORMATION, "Register Successfully").show();
+              return;
+          }
+          new Alert(Alert.AlertType.WARNING, "Register Failed").show();
+
 
 
         } catch (ClassNotFoundException | SQLException e) {
-            throw new RuntimeException(e);
+            new Alert(Alert.AlertType.ERROR, "Something went wrong..").show();
         }
 
 
