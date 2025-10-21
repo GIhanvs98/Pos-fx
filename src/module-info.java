@@ -2,6 +2,9 @@ module pos {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.graphics;
+    requires java.sql;
+    requires jbcrypt;
+
 
     // ---- Make your main Application class accessible ----
     opens com.gihanvs.pos to javafx.graphics, javafx.fxml;
