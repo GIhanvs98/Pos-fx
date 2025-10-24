@@ -1,4 +1,4 @@
-package com.gihanvs.pos.utill;
+package com.gihanvs.pos.dao;
 
 import com.gihanvs.pos.db.DbConnection;
 
@@ -12,7 +12,6 @@ public class CrudUtill {
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         for (int i = 0; i < params.length; i++) {
             preparedStatement.setObject(i + 1, params[i]);
-
         }
 
         if (sql.startsWith("SELECT")) {
