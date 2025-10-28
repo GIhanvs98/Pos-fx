@@ -1,6 +1,5 @@
 package com.gihanvs.pos.controller;
 
-import com.gihanvs.pos.DatabaseCode;
 import com.gihanvs.pos.model.LoginData;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -27,7 +26,7 @@ public class LoginFormController {
     }
 
     public void loginOnAction(ActionEvent actionEvent) throws IOException {
-        try {
+      /*  try {
             LoginData loginData = DatabaseCode.loginUser(txtEmail.getText().toLowerCase(), txtPassword.getText());
             if (loginData.isStatus()){
                 new Alert(Alert.AlertType.INFORMATION, "Welcome "+loginData.getDisplayName(), ButtonType.OK).show();
@@ -38,7 +37,7 @@ public class LoginFormController {
 
         } catch (ClassNotFoundException | SQLException e) {
             throw new RuntimeException(e);
-        }
+        }*/
 
     }
 

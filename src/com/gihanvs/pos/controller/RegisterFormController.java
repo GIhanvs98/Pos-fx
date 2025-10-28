@@ -1,6 +1,5 @@
 package com.gihanvs.pos.controller;
 
-import com.gihanvs.pos.DatabaseCode;
 import com.gihanvs.pos.model.User;
 import com.gihanvs.pos.utill.PasswordHash;
 import javafx.event.ActionEvent;
@@ -29,7 +28,7 @@ public class RegisterFormController {
     }
 
     public void registerOnAction(ActionEvent actionEvent) throws IOException {
-        try {
+      /*  try {
           boolean isSaved = DatabaseCode.registerUser(
                     new User(
                             UUID.randomUUID().toString(),
@@ -47,7 +46,7 @@ public class RegisterFormController {
 
         } catch (ClassNotFoundException | SQLException e) {
             new Alert(Alert.AlertType.ERROR, "Something went wrong..").show();
-        }
+        }*/
 
 
     }
