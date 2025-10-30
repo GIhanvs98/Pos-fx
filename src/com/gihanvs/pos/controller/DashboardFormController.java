@@ -1,6 +1,7 @@
 package com.gihanvs.pos.controller;
 
 import com.gihanvs.pos.env.StaticResource;
+import com.gihanvs.pos.env.SystemVariables;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
@@ -24,10 +25,30 @@ public class DashboardFormController {
     public Label lblDate;
     public Label lblTime;
     public AnchorPane context;
+    public Label lblUser;
 
-    public void initialize(){
+    public void initialize() {
+        try{
+            if(SystemVariables.responseUserDto==null) logout();
+
+        }catch(Exception e){
+            throw  new RuntimeException(e);
+        }
+        setSystemUserDetails();
+
         setStaticData();
         setDateAndTime();
+    }
+
+    private void setSystemUserDetails() {
+        lblUser.setText(SystemVariables.responseUserDto.getDisplayName());
+    }
+
+    private void logout() throws IOException {
+        if (SystemVariables.responseUserDto==null) {
+
+            setUi("LoginForm");
+        }
     }
 
     private void setDateAndTime() {
@@ -49,8 +70,14 @@ public class DashboardFormController {
 
     }
 
-    public void logoutOnAction(ActionEvent actionEvent) throws IOException {
-        setUi("Loginform");
+    public void logoutOnAction(ActionEvent actionEvent)  {
+        SystemVariables.responseUserDto=null;
+      try{
+          logout();
+      }catch(Exception e){
+          throw  new RuntimeException(e);
+      }
+
     }
     private void setUi(String location) throws IOException {
         Stage stage = (Stage) context.getScene().getWindow();

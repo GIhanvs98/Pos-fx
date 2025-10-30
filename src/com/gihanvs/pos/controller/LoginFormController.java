@@ -3,6 +3,7 @@ package com.gihanvs.pos.controller;
 import com.gihanvs.pos.bo.BoFactory;
 import com.gihanvs.pos.bo.custom.UserBo;
 import com.gihanvs.pos.dto.response.ResponseUserDto;
+import com.gihanvs.pos.env.SystemVariables;
 import com.gihanvs.pos.model.LoginData;
 import com.gihanvs.pos.utill.BoType;
 import javafx.event.ActionEvent;
@@ -35,6 +36,7 @@ public class LoginFormController {
             ResponseUserDto loginStatus = userBo.login(txtEmail.getText(), txtPassword.getText());
             if (loginStatus!=null) {
                 if (loginStatus.getStatusCode()==200) {
+                    SystemVariables.responseUserDto=loginStatus;
                     new Alert(Alert.AlertType.INFORMATION, "Welcome "+loginStatus.getDisplayName()).show();
                     setUi("DashboardForm");
                 }else  {

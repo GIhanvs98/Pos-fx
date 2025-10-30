@@ -21,7 +21,7 @@
       <Label fx:id="lblVersion" layoutX="532.0" layoutY="331.0" prefHeight="17.0" prefWidth="86.0" />
       <Label fx:id="lblDate" layoutX="203.0" layoutY="27.0" prefHeight="17.0" prefWidth="171.0" />
       <Label fx:id="lblTime" layoutX="380.0" layoutY="28.0" prefHeight="17.0" prefWidth="108.0" />
-      <Button layoutX="521.0" layoutY="23.0" mnemonicParsing="false" onAction="#logoutOnAction" text="Logout">
+      <Button layoutX="491.0" layoutY="23.0" mnemonicParsing="false" onAction="#logoutOnAction" text="Logout">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -134,5 +134,10 @@
             </Label>
          </children>
       </AnchorPane>
+      <Label fx:id="lblUser" layoutX="555.0" layoutY="26.0" prefHeight="19.0" prefWidth="97.0" textFill="#21099a">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
