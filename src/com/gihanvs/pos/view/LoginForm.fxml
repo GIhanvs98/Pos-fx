@@ -20,8 +20,8 @@
             <Font name="Arial Black" size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="txtEmail" layoutX="38.0" layoutY="119.0" prefHeight="25.0" prefWidth="202.0" promptText="Root Email" />
-      <PasswordField fx:id="txtPassword" layoutX="38.0" layoutY="155.0" prefHeight="25.0" prefWidth="160.0" promptText="Password" />
+      <TextField fx:id="txtEmail" layoutX="38.0" layoutY="119.0" prefHeight="25.0" prefWidth="202.0" promptText="Root Email" text="darkcreationsl98@gmail.com" />
+      <PasswordField fx:id="txtPassword" layoutX="38.0" layoutY="155.0" prefHeight="25.0" prefWidth="160.0" promptText="Password" text="1234" />
       <AnchorPane layoutX="211.0" layoutY="155.0" prefHeight="25.0" prefWidth="29.0" style="-fx-background-color: #636e72;">
          <children>
             <ImageView fitHeight="25.0" fitWidth="22.0" layoutX="2.0" pickOnBounds="true" preserveRatio="true">

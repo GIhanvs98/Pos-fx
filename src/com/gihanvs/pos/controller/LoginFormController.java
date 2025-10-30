@@ -35,15 +35,17 @@ public class LoginFormController {
             ResponseUserDto loginStatus = userBo.login(txtEmail.getText(), txtPassword.getText());
             if (loginStatus!=null) {
                 if (loginStatus.getStatusCode()==200) {
-                    new Alert(Alert.AlertType.INFORMATION, "Welcome "+loginStatus.getDisplayName(), ButtonType.OK).show();
+                    new Alert(Alert.AlertType.INFORMATION, "Welcome "+loginStatus.getDisplayName()).show();
                     setUi("DashboardForm");
                 }else  {
-                    new Alert(Alert.AlertType.ERROR, loginStatus.getMsg()+" :"+loginStatus.getStatusCode(), ButtonType.OK).show();
+                    new Alert(Alert.AlertType.ERROR, loginStatus.getMsg()+" :"+loginStatus.getStatusCode()).show();
                 }
+            }else {
+                new Alert(
+                        Alert.AlertType.ERROR,
+                        "User not found").show();
             }
-            new Alert(
-                    Alert.AlertType.ERROR,
-                    "User not found", ButtonType.OK).show();
+
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
