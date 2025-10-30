@@ -1,9 +1,12 @@
 package com.gihanvs.pos.bo.custom;
 
+import com.gihanvs.pos.bo.SuperBo;
 import com.gihanvs.pos.dto.request.RequestUserDto;
 import com.gihanvs.pos.dto.response.ResponseUserDto;
 
-public interface UserBo {
-    public boolean registeruser(RequestUserDto requestUserDto);
-    public ResponseUserDto login( String email, String password);
+import java.sql.SQLException;
+
+public interface UserBo extends SuperBo {
+    public boolean registeruser(RequestUserDto requestUserDto) throws SQLException, ClassNotFoundException;
+    public ResponseUserDto login( String email, String password) throws SQLException, ClassNotFoundException;
 }

@@ -9,5 +9,5 @@ import java.util.List;
 
 public interface UserDao extends CrudDao<User,String> {
    public List<User> findByName(String name);
-   public LoginData findByEmail(String email,String password) throws SQLException, ClassNotFoundException;
+   public User findByEmail(String email) throws SQLException, ClassNotFoundException;
 }

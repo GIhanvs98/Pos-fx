@@ -17,21 +17,21 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public LoginData findByEmail(String email,String password) throws SQLException, ClassNotFoundException {
+    public User findByEmail(String email) throws SQLException, ClassNotFoundException {
 
         ResultSet rs = CrudUtill.execute("SELECT * FROM user WHERE email = ?",email);
         if (rs.next()) {
-            String userEmail = rs.getString("email");
-            String hashedPassword = rs.getString("password");
-            String displayName = rs.getString("display_name");
+            return new User(
+                    rs.getString(1),
+                    rs.getString(2),
+                    rs.getString(3),
+                    rs.getString(4),
+                    rs.getString(5)
+            );
 
-            if (PasswordHash.checkPassword(password,hashedPassword)) {
-                return new LoginData(200,"success",userEmail,displayName,true);
-            }else {
-                return new LoginData(401,"Wrong Password",null,null,false);
-            }
+
         }else {
-            return new LoginData(404,"User not found",null,null,false);
+            return null;
         }
     }
 

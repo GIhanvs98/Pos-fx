@@ -1,6 +1,10 @@
 package com.gihanvs.pos.controller;
 
+import com.gihanvs.pos.bo.BoFactory;
+import com.gihanvs.pos.bo.custom.UserBo;
+import com.gihanvs.pos.dto.response.ResponseUserDto;
 import com.gihanvs.pos.model.LoginData;
+import com.gihanvs.pos.utill.BoType;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -20,26 +24,33 @@ public class LoginFormController {
     public TextField txtEmail;
     public PasswordField txtPassword;
 
+    private UserBo userBo=BoFactory.getInstance().getBoFactory(BoType.USER);
     public void navigateToForgotPasswordOnAction(ActionEvent actionEvent) throws IOException {
         setUi("ForgotPasswordFrom");
 
     }
 
     public void loginOnAction(ActionEvent actionEvent) throws IOException {
-      /*  try {
-            LoginData loginData = DatabaseCode.loginUser(txtEmail.getText().toLowerCase(), txtPassword.getText());
-            if (loginData.isStatus()){
-                new Alert(Alert.AlertType.INFORMATION, "Welcome "+loginData.getDisplayName(), ButtonType.OK).show();
-                setUi("DashboardForm");
-            } else {
-                new Alert(Alert.AlertType.ERROR, loginData.getMsg()).show();
+        try {
+            ResponseUserDto loginStatus = userBo.login(txtEmail.getText(), txtPassword.getText());
+            if (loginStatus!=null) {
+                if (loginStatus.getStatusCode()==200) {
+                    new Alert(Alert.AlertType.INFORMATION, "Welcome "+loginStatus.getDisplayName(), ButtonType.OK).show();
+                    setUi("DashboardForm");
+                }else  {
+                    new Alert(Alert.AlertType.ERROR, loginStatus.getMsg()+" :"+loginStatus.getStatusCode(), ButtonType.OK).show();
+                }
             }
-
-        } catch (ClassNotFoundException | SQLException e) {
+            new Alert(
+                    Alert.AlertType.ERROR,
+                    "User not found", ButtonType.OK).show();
+        } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
-        }*/
+        }
+
 
     }
+
 
     public void backToScreenOnAction(ActionEvent actionEvent) throws IOException {
         setUi("MainForm");

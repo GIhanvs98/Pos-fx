@@ -1,6 +1,10 @@
 package com.gihanvs.pos.controller;
 
+import com.gihanvs.pos.bo.BoFactory;
+import com.gihanvs.pos.bo.custom.impl.UserBoImpl;
+import com.gihanvs.pos.dto.request.RequestUserDto;
 import com.gihanvs.pos.model.User;
+import com.gihanvs.pos.utill.BoType;
 import com.gihanvs.pos.utill.PasswordHash;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -22,12 +26,28 @@ public class RegisterFormController {
     public PasswordField txtPW;
     public TextField txtContact;
     public TextField txtName;
+    
+    UserBoImpl userBoImple=BoFactory.getInstance().getBoFactory(BoType.USER);
+    
 
     public void backToScreenOnAction(ActionEvent actionEvent) throws IOException {
         setUi("MainForm");
     }
 
     public void registerOnAction(ActionEvent actionEvent) throws IOException {
+        try {
+            boolean isRegister = userBoImple.registeruser(
+                    new RequestUserDto(txtEmail.getText(),
+                            txtName.getText(),
+                            txtContact.getText(),
+                            txtPW.getText()));
+            if (isRegister) {
+                new Alert(Alert.AlertType.INFORMATION,"User registered successfully").show();
+                setUi("LoginForm");
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
       /*  try {
           boolean isSaved = DatabaseCode.registerUser(
                     new User(
@@ -47,6 +67,7 @@ public class RegisterFormController {
         } catch (ClassNotFoundException | SQLException e) {
             new Alert(Alert.AlertType.ERROR, "Something went wrong..").show();
         }*/
+        
 
 
     }
