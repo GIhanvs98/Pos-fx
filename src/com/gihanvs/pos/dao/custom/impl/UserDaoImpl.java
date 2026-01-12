@@ -2,6 +2,7 @@ package com.gihanvs.pos.dao.custom.impl;
 
 import com.gihanvs.pos.dao.CrudUtill;
 import com.gihanvs.pos.dao.custom.UserDao;
+import com.gihanvs.pos.entity.Customer;
 import com.gihanvs.pos.entity.User;
 import com.gihanvs.pos.model.LoginData;
 import com.gihanvs.pos.utill.PasswordHash;
@@ -51,8 +52,8 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public String findById(String s) {
-        return "";
+    public User findById(String s) {
+    return null;
     }
 
     @Override

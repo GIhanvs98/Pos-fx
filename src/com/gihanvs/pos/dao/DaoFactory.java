@@ -1,6 +1,7 @@
 package com.gihanvs.pos.dao;
 
 import com.gihanvs.pos.dao.custom.UserDao;
+import com.gihanvs.pos.dao.custom.impl.CustomerDaoImpl;
 import com.gihanvs.pos.dao.custom.impl.UserDaoImpl;
 import com.gihanvs.pos.utill.DaoType;
 
@@ -17,6 +18,7 @@ public class DaoFactory {
         switch (daoType){
             case USER:
                 return(T) new UserDaoImpl();
+            case CUSTOMER:return (T) new CustomerDaoImpl();
 
                 default:return null;
         }

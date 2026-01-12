@@ -1,5 +1,6 @@
 package com.gihanvs.pos.bo;
 
+import com.gihanvs.pos.bo.custom.impl.CustomerBoImpl;
 import com.gihanvs.pos.bo.custom.impl.UserBoImpl;
 import com.gihanvs.pos.utill.BoType;
 
@@ -17,6 +18,8 @@ public class BoFactory {
         switch (boType) {
             case USER:
                 return(T) new UserBoImpl();
+            case CUSTOMER:
+                return (T) new CustomerBoImpl();
             default:
                 return null;
         }

@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.Window;
@@ -82,5 +83,9 @@ public class DashboardFormController {
     private void setUi(String location) throws IOException {
         Stage stage = (Stage) context.getScene().getWindow();
         stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/com/gihanvs/pos/view/"+location+".fxml"))));
+    }
+
+    public void openCustomerFormOnAction(MouseEvent mouseEvent) throws IOException {
+        setUi("CustomerForm");
     }
 }
